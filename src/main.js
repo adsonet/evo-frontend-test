@@ -20,7 +20,7 @@ Vue.use(BootstrapVue)
 Vue.use(Buefy);
 
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true;
 
 new Vue({
   render: h => h(App),
