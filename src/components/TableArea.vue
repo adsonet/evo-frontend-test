@@ -1,20 +1,31 @@
 <template>
     <section>
+
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3">
+            <h1 class="evo-test-heading">Test <img style="width:18px" src="../assets/question-mark-icon.png" alt=""></h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
+        </div>
+
+
+        <h2 class="evo-test-subheading">Select requests to perform actions</h2>
+
         <b-table
-                    :data="data"
-                    :checked-rows.sync="checkedRows"
-                    :is-row-checkable="(row) => row.id"
-                    checkable
-                    paginated
-                    :per-page="displayRowNum"
-                    :checkbox-position="checkboxPosition"
-                    :opened-detailed="defaultOpenedDetails"
-                    detailed
-                    detail-key="id"
-                    :detail-transition="transitionName"
-                    :show-detail-icon="showDetailIcon"
-                    class="b-table"
-                    >
+            :data="data"
+            :checked-rows.sync="checkedRows"
+            :is-row-checkable="(row) => row.id"
+            checkable
+            paginated
+            pagination-simple= true
+            :per-page="displayRowNum"
+            :opened-detailed="defaultOpenedDetails"
+            detailed
+            detail-key="id"
+            :detail-transition="transitionName"
+            :show-detail-icon="showDetailIcon"
+            :has-detailed-visible="(row) => row.notes"
+            :checkbox-position="checkboxPosition"
+            class="b-table">
 
             <b-table-column field="id" label="ID" width="40" numeric v-slot="props">
                 {{ props.row.id }} 
@@ -38,38 +49,27 @@
             <b-table-column field="date" label="Date" sortable left v-slot="props">
                 <small class="is-small">
                     {{ props.row.date }}
-                    <!-- {{ new Date(props.row.date).toLocaleDateString() }} -->
                 </small>
             </b-table-column>
 
             <b-table-column label="Gender" left v-slot="props">
-                <!-- <span>
-                    <b-icon pack="fas"
-                        :icon="props.row.gender === 'Male' ? 'mars' : 'venus'">
-                    </b-icon>
-                </span> -->
                     {{ props.row.gender }}
-                
             </b-table-column>
 
             <b-table-column width="50" custom-key="actions" v-slot="props">
                 <b-button
-                    label="Edit"
-                    type="is-primary"
                     size="is-small"
+                    icon-right="pencil"
+                    class="no-border"
                     @click="launchModal(props)" />
             </b-table-column>
 
             <b-table-column width="50" custom-key="actions" v-slot="props">
                 <b-button
-                    label="Del"
-                    type="is-danger"
                     size="is-small"
+                    icon-right="delete"
+                    class="no-border-danger"
                     @click="confirmCustomDelete(props)" />
-
-                <!-- <button class="button is-small is-danger" @click.native="confirmCustomDelete">
-                    <b-icon icon="delete" size="is-small"></b-icon> Del
-                </button> -->
             </b-table-column>
 
                     
@@ -87,10 +87,6 @@
                 </b-field> &nbsp;
                 <b>requests per page</b>
             </template>
-
-            <!-- <template #bottom-left>
-                <b>Total checked</b>: {{ checkedRows.length }}
-            </template> -->
 
             <template slot="detail" slot-scope="props">
                 <article class="media">
@@ -129,6 +125,7 @@
         </span>
         </div>
 
+        <br>
 
     </section>
 </template>
@@ -137,13 +134,6 @@
 import EditModal from './EditModal.vue'
     export default {
         data() {
-            // const data = [
-            //     { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016-10-15 13:43:27', 'gender': 'Male', 'notes': 'My notes' },
-            //     { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016-12-15 06:00:53', 'gender': 'Male', 'notes': 'Special notes to everyone'  },
-            //     { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016-04-26 06:26:28', 'gender': 'Female', 'notes': 'My notes'  },
-            //     { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016-04-10 10:28:46', 'gender': 'Male', 'notes': ''  },
-            //     { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016-12-06 14:38:38', 'gender': 'Female', 'notes': 'Hi guys, checkout my world'  }
-            // ]
 
             const data = require('@/data/sample.json')
 
@@ -169,24 +159,6 @@ import EditModal from './EditModal.vue'
             }
         },
         methods: {
-            launchModal(props) {
-                this.$buefy.modal.open({
-                    parent: this,
-                    component: EditModal,
-                    hasModalCard: true,
-                    customClass: 'custom-class custom-class-2',
-                    props:{formData: props.row, rowIndex: props.index},
-                    // events: {
-                    //     'update-record': formData => {
-                    //         this.updateRecord(formData);
-                    //     }
-                    // }                    
-                });
-
-                // modal.$on('close', ($event) => {
-                //     this.updateRecord($event);
-                // })              
-            },
             confirmCustomDelete(recordProp) {
                 let name = recordProp.row.first_name;
                 this.$buefy.dialog.confirm({
@@ -207,6 +179,15 @@ import EditModal from './EditModal.vue'
             deleteRecord(recordIndex) {
                 this.data.splice(recordIndex, 1);
             },
+            launchModal(props) {
+                this.$buefy.modal.open({
+                    parent: this,
+                    component: EditModal,
+                    hasModalCard: true,
+                    customClass: 'custom-class custom-class-2',
+                    props:{formData: props.row, rowIndex: props.index},                 
+                });            
+            },
             onFileChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length) return;
@@ -220,14 +201,7 @@ import EditModal from './EditModal.vue'
                 };
                 reader.readAsText(file);
             }
-            
         },
         
     }
 </script>
-
-<style scoped>
-.b-table   {
-    text-align: left;
-}
-</style>

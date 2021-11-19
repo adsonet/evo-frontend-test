@@ -72,9 +72,6 @@
                         <b-button
                             label="Close"
                             @click="$emit('close')" />
-                        <!-- <b-button
-                            label="Save"
-                            type="is-primary" /> -->
                     </footer>
                 </div>
             </form>
@@ -101,7 +98,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

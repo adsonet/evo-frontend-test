@@ -31326,10 +31326,17 @@ body {
 }
 
 .evo-nav-ul a {
-  padding-left: 20px;
   color: white !important;
   font-size: 14px;
   font-weight: 600 !important;
+}
+
+.evo-nav-ul a:not(.has-caret) {
+  padding-left: 25px;
+}
+
+.evo-nav-ul a.has-caret {
+  padding-left: 5px !important;
 }
 
 .evo-nav-ul a .nav-link {
@@ -31346,5 +31353,45 @@ body {
 
 .evo-nav-ul a:focus, .evo-nav-ul a:active, .evo-nav-ul a:link {
   color: white;
+}
+
+.evo-nav-ul a:hover:not(.active) {
+  color: #5eafa7 !important;
+}
+
+/** TableArea Component */
+.evo-test-heading {
+  font-size: 26px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-weight: 600;
+  color: #3ab2a7;
+}
+
+.evo-test-subheading {
+  text-align: left;
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.b-table {
+  text-align: left;
+}
+
+.no-border, .no-border-danger {
+  border: none !important;
+  padding: 0px !important;
+  font-size: 16px !important;
+  /* background: #039; */
+  height: 20px;
+}
+
+.no-border:hover, .no-border-danger:hover {
+  color: #5eafa7;
+}
+
+.no-border-danger:hover {
+  color: red;
 }
 /*# sourceMappingURL=app.css.map */

@@ -17,7 +17,6 @@ export default {
 
 
 <style>
-/* @import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css'); */
 @import url('https://cdn.jsdelivr.net/npm/@mdi/font@5.8.55/css/materialdesignicons.min.css');
 
 #app {
