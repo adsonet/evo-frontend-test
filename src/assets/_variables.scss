@@ -1,0 +1,27 @@
+// Top Bar
+$topBarBlack: hsl(255, 0%, 0%);
+
+$brandOrange: rgba(244, 159, 51, 1);
+$brandColor: rgb(94, 175, 167);
+$brandDark: rgb(55, 71,  86);
+$brandLightDark: rgb(64, 82,  98);
+$white: hsl(0, 0%, 100%);
+$offwhite: rgb(244, 244, 244);
+
+
+// Font Sizes
+$font-sm: 0.875rem; // 14px
+$font-md: 1.125rem; // 18px
+
+
+// Bootstrap
+$theme-colors: (
+    "dark": $topBarBlack,
+    "primary": $brandColor
+);
+
+$theme-colors:map-merge($theme-colors, (
+    "dark": $topBarBlack,
+    "primary": $brandColor
+));
+

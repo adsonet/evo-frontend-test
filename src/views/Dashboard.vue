@@ -1,7 +1,7 @@
 <template>
 <div>
-    <header class="navbar navbar-dark sticky-top bg-light flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">EVO</a>
+    <header class="navbar navbar-dark bg-light flex-md-nowrap sticky-top p-0 shadow evo-header">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 evo-navbar-brand" href="#">EVO</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,44 +16,50 @@
     <div class="container-fluid" >
     <div class="row">
         
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="margin-top:52px; padding-top:0px">
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-            <div class="position-sticky pt-3" style="text-align:left">
-                <ul class="nav flex-column">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse evo-sidebar">
+            <input class="form-control form-control-dark w-100 evo-nav-search" type="text" placeholder="Search" aria-label="Search">
+            <div class="position-sticky pt-3 evo-nav-div">
+                <ul class="nav flex-column evo-nav-ul">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">
                     <span data-feather="home"></span>
-                    Dashboard
+                        Welcome
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                     <span data-feather="file"></span>
-                    Orders
+                        Data Import
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                     <span data-feather="shopping-cart"></span>
-                    Products
+                        Import requests
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                     <span data-feather="users"></span>
-                    Customers
+                        Self onboarding process
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                     <span data-feather="bar-chart-2"></span>
-                    Reports
+                        Change plan
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                     <span data-feather="layers"></span>
-                    Integrations
+                        Evo University
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+                        Protal &amp; adding stats
                     </a>
                 </li>
                 </ul>
