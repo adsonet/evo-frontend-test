@@ -1,55 +1,80 @@
 <template>
     <section>
-        <!-- <div class="buttons">
-            <b-button
-                label="Launch image modal (HTML)"
-                type="is-primary"
-                size="is-medium"
-                @click="imageModal" />
-            <b-button
-                label="Launch card modal (Component)"
-                type="is-primary"
-                size="is-medium"
-                @click="cardModal" />
-        </div> -->
         <form action="">
                 <div class="modal-card" style="width: auto">
                     <header class="modal-card-head">
-                        <p class="modal-card-title">Login</p>
+                        <p class="modal-card-title">Edit Record</p>
                         <button
                             type="button"
                             class="delete"
                             @click="$emit('close')"/>
                     </header>
                     <section class="modal-card-body">
-                        <b-field label="Email">
-                            <b-input
-                                type="email"
-                                value="email"
-                                placeholder="Your email"
-                                required>
-                            </b-input>
-                        </b-field>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <b-field>
+                                    <b-input
+                                        type="text"
+                                        v-model="formData.first_name"
+                                        placeholder="First name"
+                                        required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                            <div class="col-md-6">
+                                <b-field>
+                                    <b-input
+                                        type="text"
+                                        v-model="formData.last_name"
+                                        placeholder="Last name"
+                                        required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                        </div>
 
-                        <b-field label="Password">
-                            <b-input
-                                type="password"
-                                value="password"
-                                password-reveal
-                                placeholder="Your password"
-                                required>
-                            </b-input>
-                        </b-field>
-
-                        <b-checkbox>Remember me</b-checkbox>
+                        <div class="row my-5">
+                            <div class="col-md-6">
+                                <b-field>
+                                    <b-input
+                                        type="text"
+                                        v-model="formData.date"
+                                        placeholder="Date"
+                                        required>
+                                    </b-input>
+                                </b-field>
+                            </div>
+                            <div class="col-md-6">
+                                <b-select v-model="formData.gender" expanded>
+                                    <option
+                                        v-for="option in genderOptions"
+                                        :value="option.value"
+                                        :key="option.label"
+                                        >
+                                        {{ option.label }}
+                                    </option>
+                                </b-select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <b-field>
+                                <b-input
+                                    v-model="formData.notes"
+                                    type="textarea"
+                                    placeholder="Notes"
+                                >
+                                </b-input>
+                            </b-field>
+                        </div>
+                        
                     </section>
                     <footer class="modal-card-foot">
                         <b-button
                             label="Close"
                             @click="$emit('close')" />
-                        <b-button
-                            label="Login"
-                            type="is-primary" />
+                        <!-- <b-button
+                            label="Save"
+                            type="is-primary" /> -->
                     </footer>
                 </div>
             </form>
@@ -60,28 +85,23 @@
     
 
     export default {
-        // created() {
-        //     this.cardModal();
-        // },
-        methods: {
-            imageModal() {
-                const h = this.$createElement
-                const vnode = h('p', { class: "image is-4by3" }, [
-                    h('img', { attrs: { src: 'https://buefy.org/static/img/placeholder-1280x960.png' }})
-                ])
-                this.$buefy.modal.open({
-                    content: [ vnode ]
-                })
-            },
-            // cardModal() {
-            //     this.$buefy.modal.open({
-            //         parent: this,
-            //         component: ModalForm,
-            //         hasModalCard: true,
-            //         customClass: 'custom-class custom-class-2',
-            //         trapFocus: true
-            //     })
-            // }
+        props: {
+            formData: Object,
+            rowIndex: Number
+        },
+        data() {
+            return {
+                gender: null,
+                genderOptions: [
+                        {label: 'Select Gender', value: null}, 
+                        {label: 'Male', value: 'Male'}, 
+                        {label: 'Female', value: 'Female'}
+                    ]
+            }
         }
     }
 </script>
+
+<style scoped>
+
+</style>
