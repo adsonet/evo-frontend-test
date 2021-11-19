@@ -5,5 +5,20 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 //@import '../../node_modules/bootstrap-vue/src/index.scss';
 
+// Import Bulma's core
+@import "../../node_modules/bulma/sass/utilities/_all";
+
+/**
+ * import the set variables before importing 
+ * the bulma and buefy styles
+ */
+@import "buefy_variables";
+
+// Import Bulma and Buefy styles
+@import "../../node_modules/bulma/bulma";
+@import "../../node_modules/buefy/src/scss/buefy";
+
+
+
 @import "dashboard";
 @import "custom";
